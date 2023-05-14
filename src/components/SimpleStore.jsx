@@ -2,9 +2,13 @@ import React, {useState} from 'react';
 
 const SimpleStore = () => {
 
-    const [errorMessage, setErrorMessage]      = useState(null);
-    const [defaultAccount , setDefaultAccount] = useState(null);
-    const [connectButtonText, setConnectButtonText] = useState(null);
+    const [errorMessage, setErrorMessage]             = useState(null);
+    const [defaultAccount , setDefaultAccount]        = useState(null);
+    const [connectButtonText, setConnectButtonText]   = useState('Connect Wallet');
+    const [currentContractVal, setCurrentContractVal] = useState(null);
+    const [provider , setProvider]                    = useState(null);
+    const [signer , setSigner]                        = useState(null);
+    const [contrsct, setContrsct]                     = useState(null);
 
     const connectWalletHandler = () => {
 
