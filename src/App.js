@@ -1,8 +1,9 @@
+import SimpleStore from "./components/SimpleStore";
 
 function App() {
   return (
     <div >
-      App
+      <SimpleStore />
     </div>
   );
 }
