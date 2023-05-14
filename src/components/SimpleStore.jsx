@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 
 const SimpleStore = () => {
 
+    errorMessage = 'new Value';
+    setErrorMessage('new value');
+
     const [errorMessage, setErrorMessage]             = useState(null);
     const [defaultAccount , setDefaultAccount]        = useState(null);
     const [connectButtonText, setConnectButtonText]   = useState('Connect Wallet');
