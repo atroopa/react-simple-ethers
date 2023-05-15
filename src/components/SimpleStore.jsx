@@ -13,9 +13,10 @@ const SimpleStore = () => {
     const [signer , setSigner]                        = useState(null);
     const [contrsct, setContrsct]                     = useState(null);
 
+
     const connectWalletHandler = () => {
         if (window.ethereum){
-            window.ethereum.request({methos: 'eth_requestAccounts'})
+            window.ethereum.request({method: 'eth_requestAccounts'})
                 .then(result => {
                     accountChangeHandler(result[0]);
                     setConnectButtonText("Wallet Connected");
@@ -26,14 +27,22 @@ const SimpleStore = () => {
         }
     }
 
+
     const accountChangeHandler = (newAccount) => {
         setDefaultAccount(newAccount);
+        updateEthers();
     }
+
+
+    const updateEthers = () => {
+        
+    }
+
 
     return (
         <div className='flex flex-col items-center py-11'>
             <h3 className='text-2xl font-bold'>{"Get/Set interaction witch contract"}</h3>
-            <button class="my-10 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white font-bold py-2 px-4 rounded-full"onClick={connectWalletHandler}>
+            <button className="my-10 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white font-bold py-2 px-4 rounded-full"onClick={connectWalletHandler}>
                 {connectButtonText}
             </button>
             <h3 className='text-2xl'> Address: {defaultAccount}</h3>
