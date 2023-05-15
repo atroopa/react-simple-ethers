@@ -45,7 +45,10 @@ const SimpleStore = () => {
             <button className="my-10 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white font-bold py-2 px-4 rounded-full"onClick={connectWalletHandler}>
                 {connectButtonText}
             </button>
-            <h3 className='text-2xl'> Address: {defaultAccount}</h3>
+            <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
+                Address: {defaultAccount}
+            </h3>
+
 
             {errorMessage}
 
