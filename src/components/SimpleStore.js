@@ -1,9 +1,11 @@
+import { ethers } from 'ethers';
 import React, {useState} from 'react';
+import SimpleStore_abi from "./SimpleStore_abi.json";
+import { providers } from 'ethers';
 
 const SimpleStore = () => {
 
-    //errorMessage = 'new Value';
-    //setErrorMessage('new value');
+    const contractAddress = '0xd9145CCE52D386f254917e481eB44e9943F39138';
 
     const [errorMessage, setErrorMessage]             = useState(null);
     const [defaultAccount , setDefaultAccount]        = useState(null);
@@ -11,7 +13,7 @@ const SimpleStore = () => {
     const [currentContractVal, setCurrentContractVal] = useState(null);
     const [provider , setProvider]                    = useState(null);
     const [signer , setSigner]                        = useState(null);
-    const [contrsct, setContrsct]                     = useState(null);
+    const [contract, setContract]                     = useState(null);
 
 
     const connectWalletHandler = () => {
@@ -35,7 +37,14 @@ const SimpleStore = () => {
 
 
     const updateEthers = () => {
-        
+        let tempProvider = new ethers.providers.web3Provider(window.ethereum);
+        setProvider(tempProvider);
+
+        let tempSigner = tempProvider.getSigner();
+        setSigner(tempSigner);
+
+        let tempContract = new ethers.Contract(contractAddress, SimpleStore_abi, tempSigner);
+        setContract(tempContract);
     }
 
 
