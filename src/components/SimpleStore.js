@@ -1,7 +1,7 @@
 import { ethers } from 'ethers';
 import React, {useState} from 'react';
 import SimpleStore_abi from "./SimpleStore_abi.json";
-import { providers } from 'ethers';
+
 
 const SimpleStore = () => {
 
@@ -37,7 +37,7 @@ const SimpleStore = () => {
 
 
     const updateEthers = () => {
-        let tempProvider = new ethers.providers.web3Provider(window.ethereum);
+        let tempProvider = new ethers.BrowserProvider(window.ethereum)
         setProvider(tempProvider);
 
         let tempSigner = tempProvider.getSigner();
