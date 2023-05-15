@@ -4395,10 +4395,10 @@ eth-lib@0.2.8:
     elliptic "^6.4.0"
     xhr-request-promise "^0.1.2"
 
-ethers@^6.3.0:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/ethers/-/ethers-6.3.0.tgz#c61efaafa2bd9a4d9f0c799d932ef3b5cd4bd37d"
-  integrity sha512-CKFYvTne1YT4S1glTiu7TgGsj0t6c6GAD7evrIk8zbeUb6nK8dcUPAiAWM8uDX/1NmRTvLM9+1Vnn49hwKtEzw==
+ethers@6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/ethers/-/ethers-6.2.1.tgz#3ba2c4ff02e6131828bd8b6bfa0885d112bd43b4"
+  integrity sha512-bwDC1A6a0NlokpjzYGnKSVo68eBNsTRdzN0nHgmpTsvowEuRDHorhMiFg/tx/7WMl2bGESfABsfH0MPZUp+EJQ==
   dependencies:
     "@adraffy/ens-normalize" "1.9.0"
     "@noble/hashes" "1.1.2"

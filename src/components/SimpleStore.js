@@ -5,7 +5,7 @@ import SimpleStore_abi from "./SimpleStore_abi.json";
 
 const SimpleStore = () => {
 
-    const contractAddress = '0xd9145CCE52D386f254917e481eB44e9943F39138';
+    const contractAddress = '0xe8cfe115152c4325e348a54140d7a765f4c36582';
 
     const [errorMessage, setErrorMessage]             = useState(null);
     const [defaultAccount , setDefaultAccount]        = useState(null);
@@ -36,17 +36,26 @@ const SimpleStore = () => {
     }
 
 
-    const updateEthers = () => {
+    const updateEthers = async () => {
         let tempProvider = new ethers.BrowserProvider(window.ethereum)
         setProvider(tempProvider);
 
-        let tempSigner = tempProvider.getSigner();
+        let tempSigner = await tempProvider.getSigner();
         setSigner(tempSigner);
 
         let tempContract = new ethers.Contract(contractAddress, SimpleStore_abi, tempSigner);
         setContract(tempContract);
     }
 
+    const getCurrentVal = async () => {
+        let val = await contract.get();
+        setCurrentContractVal(val);
+    }
+
+    const setHandler = event => {
+        event.preventDefault();
+        contract.set(event.target.setText.value);
+    }
 
     return (
         <div className='flex flex-col items-center py-11'>
@@ -58,7 +67,22 @@ const SimpleStore = () => {
                 Address: {defaultAccount}
             </h3>
 
+            <form onSubmit={setHandler}>
+                <input className=' bg-gray-50 px-2' id='setText' type='text'/>
+                <button className='bg-gray-500 py-4 px-2 text-gray-100' type={"submit"}>Update Contract</button>
+            </form>
 
+            <button className="my-10 
+                               bg-gradient-to-r 
+                               from-red-700 
+                               via-orange-500 
+                               to-yellow-500 
+                               text-white font-bold py-2 px-4 rounded-full" 
+                               onClick={getCurrentVal}>
+                Get Current Val
+            </button>
+
+            {currentContractVal}
             {errorMessage}
 
         </div>
