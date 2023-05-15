@@ -4,6 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+
+![Screenshot from 2023-05-15 18-46-14](https://github.com/atroopa/react-simple-ethers/assets/48874611/b54a8feb-2505-43cc-ab2c-0113d454b919)
+
+
 In the project directory, you can run:
 
 ### `yarn start`
