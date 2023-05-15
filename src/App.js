@@ -2,7 +2,7 @@ import SimpleStore from "./components/SimpleStore";
 
 function App() {
   return (
-    <div >
+    <div  className=" bg-slate-800">
       <SimpleStore />
     </div>
   );

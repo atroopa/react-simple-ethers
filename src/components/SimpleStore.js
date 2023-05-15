@@ -1,12 +1,11 @@
-import { ethers } from 'ethers';
+import { ethers }        from 'ethers';
 import React, {useState} from 'react';
-import SimpleStore_abi from "./SimpleStore_abi.json";
+import SimpleStore_abi   from "./SimpleStore_abi.json";
 
 
 const SimpleStore = () => {
 
-    const contractAddress = '0xe8cfe115152c4325e348a54140d7a765f4c36582';
-
+    const contractAddress                             = '0xe8cfe115152c4325e348a54140d7a765f4c36582';
     const [errorMessage, setErrorMessage]             = useState(null);
     const [defaultAccount , setDefaultAccount]        = useState(null);
     const [connectButtonText, setConnectButtonText]   = useState('Connect Wallet');
@@ -17,6 +16,7 @@ const SimpleStore = () => {
 
 
     const connectWalletHandler = () => {
+
         if (window.ethereum){
             window.ethereum.request({method: 'eth_requestAccounts'})
                 .then(result => {
@@ -59,17 +59,55 @@ const SimpleStore = () => {
 
     return (
         <div className='flex flex-col items-center py-11'>
-            <h3 className='text-2xl font-bold'>{"Get/Set interaction witch contract"}</h3>
-            <button className="my-10 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white font-bold py-2 px-4 rounded-full"onClick={connectWalletHandler}>
-                {connectButtonText}
+            <h3 className='text-2xl font-bold  text-slate-200'>{"Get/Set interaction witch contract"}</h3>
+            <button className="my-10 
+                               bg-gradient-to-r 
+                               from-purple-400 
+                               via-pink-500 
+                               to-red-500  
+                               font-bold 
+                               py-2 
+                               px-4 
+                               rounded-full
+                               text-slate-200" onClick={connectWalletHandler}>
+                               {connectButtonText}
             </button>
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
-                Address: {defaultAccount}
+            <h3 className="text-2xl 
+                           font-bold 
+                           bg-gradient-to-r 
+                           from-purple-400 
+                           via-pink-500 
+                           to-red-500 
+                           bg-clip-text 
+                           
+                           text-transparent">
+
+                           Address: {defaultAccount}
             </h3>
 
-            <form onSubmit={setHandler}>
-                <input className=' bg-gray-50 px-2' id='setText' type='text'/>
-                <button className='bg-gray-500 py-4 px-2 text-gray-100' type={"submit"}>Update Contract</button>
+            <form className='flex space-x-5 items-center' onSubmit={setHandler}>
+                <input className="w-1/3
+                                  h-1/5 
+                                  px-4 
+                                  py-2 
+                                  border 
+                                  border-gray-500 
+                                  outline-none 
+                                  focus:border-gray-800
+                                  bg-slate-400
+                                  text-white
+                                  " id='setText' type='text'/>
+
+                <button className='my-10 
+                                   bg-gradient-to-r 
+                                   from-gray-400 
+                                   via-pink-500 
+                                   to-gray-900 
+                                   text-slate-200
+                                   font-bold 
+                                   py-2 
+                                   px-4 
+                                   rounded-full' type={"submit"}> Update Contract </button>
             </form>
 
             <button className="my-10 
@@ -77,13 +115,17 @@ const SimpleStore = () => {
                                from-red-700 
                                via-orange-500 
                                to-yellow-500 
-                               text-white font-bold py-2 px-4 rounded-full" 
+                               text-slate-200 font-bold py-2 px-4 rounded-full" 
                                onClick={getCurrentVal}>
                 Get Current Val
             </button>
 
-            {currentContractVal}
-            {errorMessage}
+            <div className='text-slate-200 font-bold text-5xl py-8'>
+                {currentContractVal}    
+            </div> 
+            <div className='text-red-500 text-2xl py-8'>
+                {errorMessage}
+            </div>
 
         </div>
     );
